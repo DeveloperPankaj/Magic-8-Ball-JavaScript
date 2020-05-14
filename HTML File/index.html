@@ -1,0 +1,136 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Macic 8 Ball : JavaScript</title>
+		<style>
+			*,body,h1,h2{
+				margin:0;
+				padding:0;
+			}
+			
+			.container{
+				width:500px;
+				height: 500px;
+				border:1px solid black;
+				margin: 30px auto;
+			}
+			
+			.container h2{
+				text-align:center;
+				font-family:arial;
+				font-size:3em;
+				
+			}
+			
+			.container p{
+				text-align:center;
+			}
+			
+			#txtInput{
+				margin:30px auto;
+				width:400px;
+				padding: 10px;
+				margin-left:40px;
+			}
+			
+			.ball{
+				    background-color: black;
+					width: 300px;
+					height: 300px;
+					position: absolute;
+					border-radius: 50%;
+					margin: 0 100px;
+				}
+			
+			.answer{
+				    background-color: #333;
+					border: 1px solid #333;
+					border-radius: 50%;
+					width: 50%;
+					height: 50%;
+					margin: 23% auto;
+					cursor: 	pointer;
+				}
+			
+			.answer #value{
+				text-align:center;
+				color:#fff;
+				font-size:5em;
+				margin-top:25px;
+			}
+			
+			.answer #result{
+				text-align:center;
+				color:#fff;
+				font-size:1em;
+				margin-top:25px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h2>Magic 8 ball</h2>
+			<p>Ask me what you want to know and click on the Magic 8 Ball</p>
+			
+			<input type="text" id="txtInput" placeholder="Enter The Value Here!!!">
+			
+			<div class="ball" id="ball" onclick="showResult();">
+				<div class="answer">
+						<p id="value">8</p>
+				        <p id="result"></p>
+				</div>				
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		function showResult(){
+			let txtValue = document.getElementById('txtInput').value;
+			
+			if(txtValue.length <1)
+			{
+				alert('Enter a question.');
+				document.getElementById('txtInput').focus();
+				return;
+			}
+			
+			
+			let randomNumber = Math.floor(Math.random() * 8);
+			let eightBall = '';
+			
+			switch (randomNumber) {
+				case 0:
+					eightBall = 'It is certain';
+					break;
+				case 1:
+					eightBall = 'It is decidedly so';
+					break;
+				case 2:
+					eightBall = 'Cannot predict now';
+					break;
+				case 3:
+					eightBall = 'Don\'t count on it';
+					break;
+				case 4:
+					eightBall = 'My sources say no';
+					break;
+				case 5:
+					eightBall = 'Outlook not so good';
+					break;
+				case 6:
+					eightBall = 'Signs point to yes';
+					break;
+				case 7:
+					eightBall = 'You are in grave danger';
+					break;
+				default:
+					eightBall = 'No Chance';
+					break;
+			}
+			
+			document.getElementById('value').innerText = "";
+			document.getElementById('result').innerText = eightBall;
+		}
+	</script>
+</html>
